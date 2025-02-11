@@ -85,6 +85,38 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "symfony serve"
+        ],
+
+        "test:phpcs": [
+            "php vendor/bin/php-cs-fixer fix --dry-run"
+        ],
+
+        "fix:phpcs": [
+            "php vendor/bin/php-cs-fixer fix"
+        ],
+
+        "test:twigcs": [
+            "php vendor/bin/twig-cs-fixer lint"
+        ],
+
+        "fix:twigcs": [
+            "php vendor/bin/twig-cs-fixer fix"
+        ],
+
+        "test:codeception": [
+            "codecept clean",
+            "php bin/console doctrine:database:drop --force --quiet --env=test",
+            "php bin/console doctrine:database:create --quiet --env=test",
+            "php bin/console doctrine:schema:create --quiet --env=test",
+            "php vendor/bin/codecept run"
+        ],
+
+        "test": [
+            "@test:phpcs", "@test:twigcs", "@test:codeception"
         ]
     },
     "conflict": {
