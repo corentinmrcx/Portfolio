@@ -19,13 +19,13 @@ class Project
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $Description = null;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $Date = null;
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $number_of_people = null;
